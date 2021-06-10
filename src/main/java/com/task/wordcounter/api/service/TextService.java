@@ -5,6 +5,7 @@ import com.task.wordcounter.model.Text;
 import com.task.wordcounter.repository.TextRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -13,15 +14,8 @@ import java.util.*;
 @Service
 @AllArgsConstructor
 public class TextService {
+    @Autowired
     private final TextRepository textRepository;
-//    private Text text = new Text("ASD ASD ASD ADS AAA AAA\nAAA AA, DSA");
-//    public TextService(TextRepository textRepository) {
-//        this.textRepository = textRepository;
-//        proccesText(text);
-//        TextResult textResult = textRepository.findById(1L).get();
-//        System.out.println(textResult == null);
-//        System.out.println(textResult.getResult().get("ADS"));
-//    }
 
     public TextResult proccesText(Text text) {
         TextResult textResult = textRepository.save(countWords(text));
@@ -30,7 +24,7 @@ public class TextService {
     }
 
     public TextResult countWords(Text text) {
-        String inputText = text.getText();
+        String inputText = text.getContent();
         String words[] = inputText.split("\\W+");
         HashMap<String, Long> result = new HashMap<>();
         long unique = 0;

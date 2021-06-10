@@ -19,7 +19,9 @@ public class TextResult {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(name="text", columnDefinition="MEDIUMBLOB")
     private Text text;
+    @Column(name="result", columnDefinition="MEDIUMBLOB")
     private HashMap<String, Long> result;
     private Long uniqueWords;
 }

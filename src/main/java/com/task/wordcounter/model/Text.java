@@ -8,5 +8,5 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Text implements Serializable {
-    private String text;
+    private String content;
 }
