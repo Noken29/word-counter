@@ -36,7 +36,6 @@ class MainControllerTest {
     public void postTest() throws Exception {
         Text text = new Text("Test String");
         TextResult saved = textService.countWords(text);
-        System.out.println(saved);
         doReturn(saved).when(textRepository).save(saved);
         this.mockMvc.perform(post("/api/text")
                 .contentType(MediaType.APPLICATION_JSON)

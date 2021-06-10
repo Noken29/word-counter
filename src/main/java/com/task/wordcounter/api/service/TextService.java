@@ -8,7 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.HashMap;
+
 
 @Slf4j
 @Service
@@ -27,15 +28,14 @@ public class TextService {
         String inputText = text.getContent();
         String words[] = inputText.split("\\W+");
         HashMap<String, Long> result = new HashMap<>();
-        long unique = 0;
         for (int i = 0; i < words.length; i++) {
             if(result.containsKey(words[i])) {
                 result.put(words[i], result.get(words[i]) + 1);
             } else {
-                result.put(words[i], Long.valueOf(1));
+                result.put(words[i], 1L);
             }
         }
-        unique = result.size();
+        long unique = result.size();
         return new TextResult().builder().text(text).result(result).uniqueWords(unique).build();
     }
 

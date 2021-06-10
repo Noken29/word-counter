@@ -25,4 +25,5 @@ public class MainController {
         log.info("host will accept request: {}", text);
         return transform(textService.proccesText(text));
     }
+
 }
